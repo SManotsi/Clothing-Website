@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | AfroTech Clothing</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+    --black:#0f0f0f;
+    --dark:#171717;
+    --gold:#d4af37;
+    --terracotta:#c96a3d;
+    --green:#0d5c46;
+    --cream:#f8f4ec;
+    --sand:#e7dcc1;
+    --white:#ffffff;
+    --grey:#666;
+    --shadow:0 18px 45px rgba(0,0,0,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;background:var(--cream);color:var(--black);line-height:1.7;}
+a{text-decoration:none;}
+nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(255,255,255,0.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.08);}
+.nav-container{max-width:1300px;margin:auto;padding:18px 30px;display:flex;justify-content:space-between;align-items:center;}
+.logo{font-size:1.5rem;font-weight:800;color:var(--black);}
+.logo span{color:var(--gold);}
+.nav-links{display:flex;gap:30px;flex-wrap:wrap;justify-content:center;}
+.nav-links a{color:var(--black);font-weight:500;transition:0.3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-button{display:inline-flex;align-items:center;justify-content:center;color:var(--black);font-weight:500;padding:0;border:none;background:transparent;transition:0.25s ease;}
+.nav-button:hover{color:var(--gold);}
+.nav-dropdown{position:relative;display:inline-block;padding-bottom:16px;}
+.nav-dropdown-menu{position:absolute;top:calc(100% - 2px);left:0;display:none;flex-direction:column;gap:4px;min-width:220px;padding:12px 10px;border-radius:12px;background:rgba(255,255,255,0.98);border:1px solid rgba(17,17,17,0.06);box-shadow:0 18px 35px rgba(0,0,0,0.08);z-index:1001;}
+.nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown:focus-within .nav-dropdown-menu{display:flex;}
+.nav-dropdown-menu a{display:block;padding:10px 12px;border-radius:8px;color:var(--black);font-weight:500;background:transparent;}
+.nav-dropdown-menu a:hover{background:rgba(17,17,17,0.03);color:var(--gold);}
+.kanga-pattern{margin-top:72px;height:90px;background:repeating-linear-gradient(45deg,var(--gold) 0 18px,var(--cream) 18px 36px,var(--terracotta) 36px 54px,var(--green) 54px 72px,var(--sand) 72px 90px);}
+.page-hero{min-height:50vh;display:flex;align-items:center;justify-content:center;text-align:center;color:white;padding:120px 30px 60px;background:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.62)),url('https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;}
+.page-hero h1{font-size:4rem;margin-bottom:12px;letter-spacing:-1px;}
+.page-hero p{max-width:760px;font-size:1.2rem;}
+.section{padding:90px 30px;}
+.container{max-width:1200px;margin:auto;}
+.section-title{text-align:center;margin-bottom:50px;}
+.section-title h2{font-size:2.8rem;margin-bottom:15px;}
+.section-title p{color:var(--grey);}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;}
+.contact-card{background:white;border-radius:22px;padding:30px;box-shadow:var(--shadow);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;}
+.contact-card .icon-wrap{width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,var(--sand),#f9f3e8);display:flex;align-items:center;justify-content:center;color:var(--green);font-size:1.6rem;box-shadow:inset 0 0 0 1px rgba(13,92,70,0.08);}
+.contact-card h3{margin-bottom:0;color:var(--green);font-size:1.35rem;}
+.contact-card p,.contact-card a{color:var(--grey);font-weight:500;}
+.contact-card a:hover{color:var(--gold);}
+.contact-form-wrap{max-width:760px;margin:0 auto;background:linear-gradient(135deg,#fffdf9,#f6efe1);border:1px solid rgba(13,92,70,0.12);border-radius:26px;box-shadow:0 22px 50px rgba(15,15,15,0.08);padding:30px;}
+.contact-form-wrap .form-field label{color:var(--green);}
+.contact-form-wrap .btn{background:var(--green);color:#fff;}
+.feedback-list{max-width:760px;margin:40px auto 0;background:#fff;border-radius:22px;box-shadow:var(--shadow);padding:30px;}
+.feedback-list h3{margin-bottom:18px;color:var(--green);font-size:1.8rem;}
+.feedback-item{padding:18px 0;border-bottom:1px solid rgba(0,0,0,0.07);}
+.feedback-item:last-child{border-bottom:none;}
+.feedback-item strong{display:block;margin-bottom:6px;color:var(--black);}
+.feedback-item p{color:var(--grey);margin:0;}
+.feedback-item small{display:block;color:var(--gold);margin-top:8px;font-weight:600;}
+.star-rating{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px;}
+.star-btn{border:none;background:transparent;color:#d1d5db;font-size:2rem;line-height:1;cursor:pointer;transition:transform 0.2s ease,color 0.2s ease,filter 0.2s ease;}
+.star-btn:hover,.star-btn:focus-visible{color:var(--gold);transform:translateY(-2px);outline:none;}
+.star-btn.active{color:var(--gold);filter:drop-shadow(0 0 8px rgba(212,175,55,0.45));}
+.form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+.form-field{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.form-field label{font-weight:600;color:var(--black);}
+.form-field input,.form-field textarea{width:100%;padding:14px 16px;border:1px solid rgba(0,0,0,0.1);border-radius:12px;background:#faf9f5;font:inherit;resize:vertical;}
+.form-field textarea{min-height:140px;}
+.btn{display:inline-block;padding:15px 35px;border-radius:40px;font-weight:600;transition:0.3s;background:var(--gold);color:var(--black);border:2px solid transparent;}
+.btn:hover{transform:translateY(-4px);box-shadow:0 12px 25px rgba(0,0,0,.15);}
+.cta{background:linear-gradient(135deg,var(--green),var(--black));color:white;text-align:center;padding:100px 30px;}
+.cta h2{font-size:3rem;margin-bottom:20px;}
+.cta p{max-width:700px;margin:0 auto 35px;}
+footer{background:black;color:white;padding:50px 30px;text-align:center;}
+footer p{opacity:.7;}
+@media(max-width:768px){.nav-links{display:none;}.page-hero h1{font-size:2.5rem;}.section-title h2{font-size:2.1rem;}}
+</style>
+</head>
+<body>
+<nav>
+    <div class="nav-container">
+        <div class="logo">Afro<span>Tech</span> Clothing</div>
+        <div class="nav-links">
+            <a href="Website_Code (5).html">Home</a>
+            <a href="our-story.html">Our Story</a>
+            <a href="Website_Code (5).html#shop">Shop</a>
+            <div class="nav-dropdown">
+                <a href="Website_Code (5).html#features" class="nav-button">Features</a>
+                <div class="nav-dropdown-menu">
+                    <a href="country-impact.html">Tanzania & Impact</a>
+                    <a href="Website_Code (5).html#reviews">Reviews</a>
+                </div>
+            </div>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+</nav>
+<div class="kanga-pattern"></div>
+<section class="page-hero">
+    <div>
+        <h1>Contact AfroTech</h1>
+        <p>We’d love to hear from you about our collections, collaborations, and community work.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Get in Touch</h2>
+            <p>Reach out for product questions, brand partnerships, or feedback.</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="icon-wrap">✉️</div>
+                <h3>Email</h3>
+                <a href="mailto:hello@afrotechclothing.co.za">hello@afrotechclothing.co.za</a>
+            </div>
+            <div class="contact-card">
+                <div class="icon-wrap">📞</div>
+                <h3>Phone</h3>
+                <a href="tel:+27601234567">+27 60 123 4567</a>
+            </div>
+            <div class="contact-card">
+                <div class="icon-wrap">💬</div>
+                <h3>WhatsApp</h3>
+                <a href="https://wa.me/27601234567" target="_blank" rel="noopener noreferrer">Chat with us</a>
+            </div>
+            <div class="contact-card">
+                <div class="icon-wrap">📍</div>
+                <h3>Location</h3>
+                <p>Dar es Salaam, Tanzania</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Send a Message</h2>
+            <p>Ask us anything and we’ll get back to you as soon as possible.</p>
+        </div>
+        <form id="contactForm" class="contact-form-wrap">
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="name">Name</label>
+                    <input id="name" type="text" placeholder="Your name" required>
+                </div>
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" placeholder="Your email" required>
+                </div>
+            </div>
+            <div class="form-field">
+                <label for="subject">Subject</label>
+                <input id="subject" type="text" placeholder="How can we help?" required>
+            </div>
+            <div class="form-field">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Tell us about your enquiry..." required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+
+        <div class="feedback-list">
+            <h3>Recent Feedback</h3>
+            <div id="feedbackList"></div>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Ready to Wear Your Story?</h2>
+    <p>Explore the collection and discover fashion shaped by African culture, identity and innovation.</p>
+    <a href="Website_Code (5).html#shop" class="btn">Shop Collection</a>
+</section>
+
+<footer>
+    <h3>AfroTech Clothing</h3>
+    <br>
+    <p>© 2026 AfroTech Clothing. All Rights Reserved.</p>
+</footer>
+
+<script>
+    const FEEDBACK_STORAGE_KEY = 'afrotechContactFeedback';
+    const defaultFeedback = [
+        { name: 'Amina', location: 'Cape Town', rating: 5, message: 'The fabric feels premium and the design is so unique. I love how the Kanga-inspired print still feels modern and wearable.' },
+        { name: 'Daniel', location: 'Johannesburg', rating: 5, message: 'AfroTech is more than fashion. It tells a story of Africa, innovation and identity. I wear my hoodie everywhere.' },
+        { name: 'Leah', location: 'Durban', rating: 5, message: 'I ordered from the collection and the quality exceeded expectations. The look is sharp, comfortable and meaningful.' }
+    ];
+
+    function getContactFeedback() {
+        const saved = localStorage.getItem(FEEDBACK_STORAGE_KEY);
+        if (!saved) {
+            localStorage.setItem(FEEDBACK_STORAGE_KEY, JSON.stringify(defaultFeedback));
+            return [...defaultFeedback];
+        }
+
+        try {
+            const parsed = JSON.parse(saved);
+            if (Array.isArray(parsed) && parsed.length) return parsed;
+        } catch (error) {
+            console.error('Unable to parse saved contact feedback', error);
+        }
+
+        localStorage.setItem(FEEDBACK_STORAGE_KEY, JSON.stringify(defaultFeedback));
+        return [...defaultFeedback];
+    }
+
+    function saveContactFeedback(feedback) {
+        localStorage.setItem(FEEDBACK_STORAGE_KEY, JSON.stringify(feedback));
+    }
+
+    function renderStars(rating) {
+        const safeRating = Math.min(5, Math.max(1, Number(rating) || 5));
+        const filled = '★'.repeat(safeRating);
+        const empty = '☆'.repeat(5 - safeRating);
+        return filled + empty;
+    }
+
+    function renderStaticFeedback() {
+        const feedbackList = document.getElementById('feedbackList');
+        if (!feedbackList) return;
+
+        const feedback = getContactFeedback();
+        feedbackList.innerHTML = feedback.slice().reverse().map((item) => `
+            <div class="feedback-item">
+                <strong>${item.name}</strong>
+                <p>${item.message}</p>
+                <small>${item.location || 'Customer'} • Just now • ${renderStars(item.rating || 5)}</small>
+            </div>
+        `).join('');
+    }
+
+    const form = document.getElementById('contactForm');
+    if (form) {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !subject || !message) {
+                return;
+            }
+
+            const feedback = getContactFeedback();
+            feedback.push({
+                name,
+                location: 'Customer',
+                rating: 5,
+                message: subject ? `${subject}: ${message}` : message
+            });
+
+            saveContactFeedback(feedback);
+            renderStaticFeedback();
+            form.reset();
+            alert('Thank you for your message! We will be in touch soon.');
+        });
+    }
+
+    renderStaticFeedback();
+</script>
+</body>
+</html>

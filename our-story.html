@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story | AfroTech Clothing</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+    --black:#0f0f0f;
+    --dark:#171717;
+    --gold:#d4af37;
+    --terracotta:#c96a3d;
+    --green:#0d5c46;
+    --cream:#f8f4ec;
+    --sand:#e7dcc1;
+    --white:#ffffff;
+    --grey:#666;
+    --shadow:0 18px 45px rgba(0,0,0,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;background:var(--cream);color:var(--black);line-height:1.7;}
+a{text-decoration:none;}
+nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(255,255,255,0.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.08);}
+.nav-container{max-width:1300px;margin:auto;padding:18px 30px;display:flex;justify-content:space-between;align-items:center;}
+.logo{font-size:1.5rem;font-weight:800;color:var(--black);}
+.logo span{color:var(--gold);}
+.nav-links{display:flex;gap:30px;flex-wrap:wrap;}
+.nav-links a{color:var(--black);font-weight:500;}
+.nav-links a:hover{color:var(--gold);}
+.nav-button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--black);
+    font-weight:500;
+    padding:0;
+    border:none;
+    background:transparent;
+    transition:0.25s ease;
+}
+.nav-button:hover{
+    color:var(--gold);
+}
+.nav-dropdown{
+    position:relative;
+    display:inline-block;
+    padding-bottom:16px;
+}
+.nav-dropdown-menu{
+    position:absolute;
+    top:calc(100% - 2px);
+    left:0;
+    display:none;
+    flex-direction:column;
+    gap:4px;
+    min-width:220px;
+    padding:12px 10px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.98);
+    border:1px solid rgba(17,17,17,0.06);
+    box-shadow:0 18px 35px rgba(0,0,0,0.08);
+    z-index:1001;
+}
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu{
+    display:flex;
+}
+.nav-dropdown-menu a{
+    display:block;
+    padding:10px 12px;
+    border-radius:8px;
+    color:var(--black);
+    font-weight:500;
+    background:transparent;
+}
+.nav-dropdown-menu a:hover{
+    background:rgba(17,17,17,0.03);
+    color:var(--gold);
+}
+.kanga-pattern{margin-top:72px;height:90px;background:repeating-linear-gradient(45deg,var(--gold) 0 18px,var(--cream) 18px 36px,var(--terracotta) 36px 54px,var(--green) 54px 72px,var(--sand) 72px 90px);}
+.page-hero{min-height:55vh;display:flex;align-items:center;justify-content:center;text-align:center;color:white;padding:120px 30px 60px;background:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.62)),url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;}
+.page-hero h1{font-size:4rem;margin-bottom:12px;letter-spacing:-1px;}
+.page-hero p{max-width:760px;font-size:1.2rem;}
+.section{padding:90px 30px;}
+.container{max-width:1200px;margin:auto;}
+.section-title{text-align:center;margin-bottom:50px;}
+.section-title h2{font-size:2.8rem;margin-bottom:15px;}
+.section-title p{color:var(--grey);}
+.story-grid,.mission-grid,.tech-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;}
+.story-card,.mission-card,.tech-card{background:white;border-radius:22px;padding:30px;box-shadow:var(--shadow);}
+.story-card h3,.mission-card h3,.tech-card h3{margin-bottom:14px;color:var(--green);font-size:1.35rem;}
+.review-card{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    min-height:220px;
+    background:white;
+    border-radius:22px;
+    padding:25px 24px;
+    box-shadow:var(--shadow);
+}
+.review-card .stars{color:var(--gold);font-size:1.2rem;letter-spacing:2px;margin-bottom:12px;}
+.review-card p{color:var(--grey);flex:1;overflow-wrap:anywhere;word-break:break-word;margin:0;}
+.review-card .person{margin-top:18px;font-weight:700;color:var(--black);}
+.review-slider{position:relative;overflow:hidden;}
+.review-track{display:flex;transition:transform 0.45s ease;}
+.review-slide{min-width:100%;padding:0 8px;}
+.review-slider-controls{display:flex;justify-content:center;gap:12px;margin-top:20px;}
+.review-arrow{width:44px;height:44px;border-radius:50%;border:1px solid rgba(17,17,17,0.08);background:rgba(255,255,255,0.9);color:var(--dark);font-size:1.6rem;cursor:pointer;transition:0.2s ease;}
+.review-arrow:hover{background:var(--gold);color:var(--black);transform:translateY(-2px);}
+.star-rating{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px;}
+.star-btn{border:none;background:transparent;color:#d1d5db;font-size:2rem;line-height:1;cursor:pointer;transition:transform 0.2s ease,color 0.2s ease,filter 0.2s ease;}
+.star-btn:hover,.star-btn:focus-visible{color:var(--gold);transform:translateY(-2px);outline:none;}
+.star-btn.active{color:var(--gold);filter:drop-shadow(0 0 8px rgba(212,175,55,0.45));}
+.quote-block{background:linear-gradient(135deg,var(--dark),var(--green));color:white;padding:35px 30px;border-radius:22px;max-width:900px;margin:20px auto 0;text-align:center;font-size:1.2rem;}
+.highlight-box{background:linear-gradient(135deg,#f5f1e9,#f0dcb6);border-left:6px solid var(--gold);padding:25px 30px;border-radius:18px;margin:20px 0;font-weight:500;}
+.cta{background:linear-gradient(135deg,var(--green),var(--black));color:white;text-align:center;padding:100px 30px;}
+.cta h2{font-size:3rem;margin-bottom:18px;}
+.hero-buttons{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:24px;}
+.btn{display:inline-block;padding:15px 35px;border-radius:40px;font-weight:600;transition:0.3s;background:var(--gold);color:var(--black);}
+.btn:hover{transform:translateY(-4px);box-shadow:0 12px 25px rgba(0,0,0,.15);}
+.btn-secondary{background:white;color:var(--green);border:1px solid rgba(255,255,255,.35);}
+.contact-form{
+    max-width:760px;
+    margin:0 auto;
+    background:#fff;
+    border-radius:22px;
+    box-shadow:var(--shadow);
+    padding:30px;
+}
+.form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+.form-field{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.form-field label{font-weight:600;color:var(--black);}
+.form-field input,
+.form-field textarea{
+    width:100%;
+    padding:14px 16px;
+    border:1px solid rgba(0,0,0,0.1);
+    border-radius:12px;
+    background:#faf9f5;
+    font:inherit;
+    resize:vertical;
+}
+.form-field textarea{min-height:140px;}
+footer{background:black;color:white;padding:50px 30px;text-align:center;}
+footer p{opacity:.7;}
+@media(max-width:768px){.nav-links{display:none;}.page-hero h1{font-size:2.8rem;}.section-title h2{font-size:2.1rem;}}
+</style>
+</head>
+<body>
+<nav>
+    <div class="nav-container">
+        <div class="logo">Afro<span>Tech</span> Clothing</div>
+        <div class="nav-links">
+            <a href="Website_Code (5).html">Home</a>
+            <a href="our-story.html">Our Story</a>
+            <a href="Website_Code (5).html#shop">Shop</a>
+            <div class="nav-dropdown">
+                <a href="#features" class="nav-button">Features</a>
+                <div class="nav-dropdown-menu">
+                    <a href="country-impact.html">Tanzania & Impact</a>
+                    <a href="Website_Code (5).html#reviews">Reviews</a>
+                </div>
+                </div>
+                     <a href="contact.html">Contact</a>
+                </div>
+    </div>
+</nav>
+<div class="kanga-pattern"></div>
+<section class="page-hero">
+    <div>
+        <h1>Our Story</h1>
+        <p>From Tanzanian heritage and Kanga symbolism to modern design technology, AfroTech Clothing brings culture and innovation together.</p>
+        <div class="hero-buttons">
+            <a href="Website_Code (5).html#shop" class="btn">Shop</a>
+            <a href="country-impact.html" class="btn btn-secondary">Explore Impact</a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Rooted in Culture. Driven by Vision.</h2>
+            <p>AfroTech Clothing was created to reflect identity, creativity and progress.</p>
+        </div>
+        <div class="story-grid">
+            <div class="story-card">
+                <h3>Where We Begin</h3>
+                <p>AfroTech Clothing is inspired by the rich creative heritage of Tanzania and the cultural power of Kanga cloth patterns. These vibrant textiles carry stories, community values and shared identity, making them a natural foundation for contemporary fashion.</p>
+            </div>
+            <div class="story-card">
+                <h3>Our Purpose</h3>
+                <p>We design streetwear that celebrates African excellence without losing the practicality of modern living. Each collection brings together expressive aesthetics, comfort and a strong sense of purpose rooted in everyday life.</p>
+            </div>
+            <div class="story-card">
+                <h3>Our Vision</h3>
+                <p>We want our clothing to connect people to their roots while empowering them to move confidently into the future. AfroTech is fashion for people building a life at the intersection of culture, ambition and technology.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Technology Meets Tradition</h2>
+            <p>We do not only focus on African identity—we also highlight how modern tools shape our garments.</p>
+        </div>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <h3>Design Technology</h3>
+                <p>We use digital design methods to turn ideas into precise garment patterns and visual storytelling that feels contemporary and intentional.</p>
+            </div>
+            <div class="tech-card">
+                <h3>Material Selection</h3>
+                <p>Our fabrics are chosen for comfort, durability, and wearability, helping us produce clothing that looks premium and feels great in everyday use.</p>
+            </div>
+            <div class="tech-card">
+                <h3>Modern Production</h3>
+                <p>We combine craftsmanship with updated production practices to maintain quality, consistency and efficient finishing across every collection.</p>
+            </div>
+        </div>
+        <div class="highlight-box">AfroTech is about more than ethnic inspiration—it is a brand where heritage and innovation work together to create meaningful, wearable identity.</div>
+    </div>
+</section>
+
+<section class="section" id="features">
+    <div class="container">
+        <div class="section-title">
+            <h2>Why Kanga Matters</h2>
+        </div>
+        <div class="mission-grid">
+            <div class="mission-card">
+                <h3>Visual Identity</h3>
+                <p>Kanga patterns are a powerful symbol of Tanzanian culture. Their colours and motifs represent communication, celebration and belonging, making them a natural expression of AfroTech’s style.</p>
+            </div>
+            <div class="mission-card">
+                <h3>Storytelling</h3>
+                <p>Every pattern carries cultural meaning, allowing our designs to become more than clothing—they become a way of telling stories through fabric and form.</p>
+            </div>
+            <div class="mission-card">
+                <h3>Connection</h3>
+                <p>By placing Kanga-inspired details in modern silhouettes, we help people feel connected to African heritage while embracing contemporary fashion culture.</p>
+            </div>
+        </div>
+        <div class="quote-block">“We believe fashion should honour where you come from while preparing you for where you are going.”</div>
+    </div>
+</section>
+
+<section class="cta" id="contact">
+    <h2>Wear the Story</h2>
+    <a href="Website_Code (5).html" class="btn">View Collection</a>
+</section>
+
+<footer>
+    <h3>AfroTech Clothing</h3>
+    <br>
+    <p>© 2026 AfroTech Clothing. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

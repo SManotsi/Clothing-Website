@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfroTech Clothing | African Heritage Meets Innovation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --black:#0f0f0f;
+    --dark:#171717;
+    --gold:#d4af37;
+    --terracotta:#c96a3d;
+    --green:#0d5c46;
+    --sage:#7ea55a;
+    --cream:#f8f4ec;
+    --sand:#e7dcc1;
+    --white:#ffffff;
+    --grey:#666;
+    --shadow:0 18px 45px rgba(0,0,0,0.08);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+    font-family:'Poppins',sans-serif;
+    background:var(--cream);
+    color:var(--black);
+    overflow-x:hidden;
+    line-height:1.7;
+}
+
+a{text-decoration:none;}
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(255,255,255,0.95);
+    -webkit-backdrop-filter:blur(12px);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(0,0,0,0.08);
+}
+
+.nav-container{
+    max-width:1300px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{font-size:1.5rem;font-weight:800;color:var(--black);}
+.logo span{color:var(--gold);}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.nav-links a{
+    color:var(--black);
+    font-weight:500;
+    transition:0.3s;
+}
+
+.nav-links a:hover{color:var(--gold);}
+
+.nav-button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--black);
+    font-weight:500;
+    padding:0;
+    border:none;
+    background:transparent;
+    transition:0.25s ease;
+}
+
+.nav-button:hover{
+    color:var(--gold);
+}
+
+.nav-dropdown{
+    position:relative;
+    display:inline-block;
+    padding-bottom:16px;
+}
+
+.nav-dropdown-menu{
+    position:absolute;
+    top:calc(100% - 2px);
+    left:0;
+    display:none;
+    flex-direction:column;
+    gap:4px;
+    min-width:220px;
+    padding:12px 10px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.98);
+    border:1px solid rgba(17,17,17,0.06);
+    box-shadow:0 18px 35px rgba(0,0,0,0.08);
+    z-index:1001;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu{
+    display:flex;
+}
+
+.nav-dropdown-menu a{
+    display:block;
+    padding:10px 12px;
+    border-radius:8px;
+    color:var(--black);
+    font-weight:500;
+    background:transparent;
+}
+
+.nav-dropdown-menu a:hover{
+    background:rgba(17,17,17,0.03);
+    color:var(--gold);
+}
+
+.kanga-pattern{
+    margin-top:72px;
+    height:90px;
+    background:
+        repeating-linear-gradient(
+            45deg,
+            var(--gold) 0 18px,
+            var(--cream) 18px 36px,
+            var(--terracotta) 36px 54px,
+            var(--green) 54px 72px,
+            var(--sand) 72px 90px
+        );
+    box-shadow:inset 0 8px 15px rgba(0,0,0,0.05);
+}
+
+.hero{
+    min-height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding:50px 30px;
+    background:
+        linear-gradient(rgba(0,0,0,.68), rgba(0,0,0,.68)),
+        url("https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1800&q=80") center/cover no-repeat;
+}
+
+.hero-content{max-width:900px;}
+.hero h1{font-size:5rem;font-weight:800;margin-bottom:20px;letter-spacing:-2px;}
+.hero p{font-size:1.3rem;margin-bottom:35px;}
+
+.hero-buttons{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;}
+
+.btn{
+    display:inline-block;
+    padding:15px 35px;
+    border-radius:40px;
+    font-weight:600;
+    transition:0.3s;
+    border:2px solid transparent;
+}
+
+.btn-primary{background:var(--gold);color:var(--black);}
+.btn-secondary{border-color:white;color:white;background:transparent;}
+.btn-tertiary{background:var(--green);color:white;}
+.btn:hover{transform:translateY(-4px);box-shadow:0 12px 25px rgba(0,0,0,.15);}
+
+.section{padding:90px 30px;}
+.container{max-width:1300px;margin:auto;}
+.section-title{text-align:center;margin-bottom:60px;}
+.section-title h2{font-size:3rem;margin-bottom:15px;}
+.section-title p{color:var(--grey);}
+
+.story, .country-copy{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+    font-size:1.1rem;
+    line-height:1.9;
+}
+
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
+.card{
+    background:white;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    transition:0.4s;
+}
+.card:hover{transform:translateY(-10px);}
+.card img{width:100%;height:320px;object-fit:cover;}
+.card-content{padding:25px;}
+.card h3{margin-bottom:10px;font-size:1.5rem;}
+.price{color:var(--gold);font-size:1.2rem;font-weight:700;margin-top:15px;}
+
+.banner{
+    background:var(--dark);
+    color:white;
+    text-align:center;
+    padding:120px 30px;
+    position:relative;
+    overflow:hidden;
+}
+
+.banner::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        repeating-linear-gradient(
+            45deg,
+            rgba(212,175,55,0.15) 0 18px,
+            rgba(201,106,61,0.15) 18px 36px,
+            rgba(13,92,70,0.15) 36px 54px,
+            rgba(255,255,255,0.04) 54px 72px
+        );
+}
+.banner h2, .banner p {position:relative;z-index:1;}
+.banner h2{font-size:3rem;margin-bottom:20px;}
+.banner p{max-width:700px;margin:auto;opacity:.85;}
+
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px;}
+.feature{
+    background:white;
+    border-radius:22px;
+    padding:35px 25px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.06);
+    border-top:4px solid var(--gold);
+}
+.feature h3{margin-bottom:15px;color:var(--gold);font-size:1.45rem;}
+
+.tech-grid,
+.review-grid,
+.info-grid,
+.org-grid,
+.page-grid,
+.mission-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.tech-card,
+.review-card,
+.info-card,
+.org-card,
+.page-card,
+.mission-card{
+    background:white;
+    border-radius:22px;
+    padding:30px;
+    box-shadow:var(--shadow);
+}
+
+.tech-card h3,
+.review-card h3,
+.info-card h3,
+.org-card h3,
+.page-card h3,
+.mission-card h3{margin-bottom:12px;color:var(--green);font-size:1.4rem;}
+
+.review-card{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    min-height:220px;
+    background:white;
+    border-radius:22px;
+    padding:25px 24px;
+    box-shadow:var(--shadow);
+}
+.review-card .stars{color:var(--gold);font-size:1.2rem;letter-spacing:2px;margin-bottom:12px;}
+.review-card p{color:var(--grey);flex:1;overflow-wrap:anywhere;word-break:break-word;margin:0;}
+.review-card .person{margin-top:18px;font-weight:700;color:var(--black);}
+.review-slider{position:relative;overflow:hidden;}
+.review-track{display:flex;transition:transform 0.45s ease;}
+.review-slide{min-width:100%;padding:0 8px;}
+.review-group{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:20px;}
+.review-slider-controls{display:flex;justify-content:center;gap:12px;margin-top:20px;}
+.review-arrow{width:44px;height:44px;border-radius:50%;border:1px solid rgba(17,17,17,0.08);background:rgba(255,255,255,0.9);color:var(--dark);font-size:1.6rem;cursor:pointer;transition:0.2s ease;}
+.review-arrow:hover{background:var(--gold);color:var(--black);transform:translateY(-2px);}
+.star-rating{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px;}
+.star-btn{border:none;background:transparent;color:#d1d5db;font-size:2rem;line-height:1;cursor:pointer;transition:transform 0.2s ease,color 0.2s ease,filter 0.2s ease;}
+.star-btn:hover,.star-btn:focus-visible{color:var(--gold);transform:translateY(-2px);outline:none;}
+.star-btn.active{color:var(--gold);filter:drop-shadow(0 0 8px rgba(212,175,55,0.45));}
+
+.cta{
+    background:linear-gradient(135deg,var(--green),var(--black));
+    color:white;
+    text-align:center;
+    padding:100px 30px;
+}
+.cta h2{font-size:3rem;margin-bottom:20px;}
+.cta p{max-width:700px;margin:0 auto 35px;}
+
+.page-hero{
+    min-height:55vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:120px 30px 60px;
+    background:
+        linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+        url("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1800&q=80") center/cover no-repeat;
+    color:white;
+}
+
+.page-hero h1{font-size:4rem;margin-bottom:12px;letter-spacing:-1px;}
+.page-hero p{max-width:700px;font-size:1.2rem;}
+
+.highlight-box{
+    background:linear-gradient(135deg,#f5f1e9,#f0dcb6);
+    border-left:6px solid var(--gold);
+    border-radius:18px;
+    padding:25px 30px;
+    margin:25px 0;
+    font-weight:500;
+}
+
+.quote-block{
+    background:linear-gradient(135deg,var(--dark),var(--green));
+    color:white;
+    padding:35px 30px;
+    border-radius:22px;
+    font-size:1.2rem;
+    text-align:center;
+    max-width:900px;
+    margin:40px auto;
+}
+
+.contact-form{
+    max-width:760px;
+    margin:0 auto;
+    background:#fff;
+    border-radius:22px;
+    box-shadow:var(--shadow);
+    padding:30px;
+}
+.form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+.form-field{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.form-field label{font-weight:600;color:var(--black);}
+.form-field input,
+.form-field textarea{
+    width:100%;
+    padding:14px 16px;
+    border:1px solid rgba(0,0,0,0.1);
+    border-radius:12px;
+    background:#faf9f5;
+    font:inherit;
+    resize:vertical;
+}
+.form-field textarea{min-height:140px;}
+
+footer{background:black;color:white;padding:50px 30px;text-align:center;}
+footer p{opacity:.7;}
+
+@media(max-width:768px){
+    .hero h1{font-size:3rem;}
+    .page-hero h1{font-size:2.6rem;}
+    .section-title h2{font-size:2rem;}
+    .nav-links{display:none;}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="logo">Afro<span>Tech</span> Clothing</div>
+        <div class="nav-links">
+            <a href="Website_Code (5).html">Home</a>
+            <a href="our-story.html">Our Story</a>
+            <a href="#shop">Shop</a>
+            <div class="nav-dropdown">
+                <a href="#features" class="nav-button">Features</a>
+                <div class="nav-dropdown-menu">
+                    <a href="country-impact.html">Tanzania & Impact</a>
+                    <a href="#reviews">Reviews</a>
+                </div>
+            </div>    
+                  <a href="contact.html">Contact</a>
+            </div>
+
+    </div>
+</nav>
+
+<div class="kanga-pattern"></div>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>AfroTech Clothing</h1>
+        <p>
+            Where African heritage meets modern innovation.
+            Premium streetwear inspired by culture, creativity and technology.
+        </p>
+        <div class="hero-buttons">
+            <a href="#shop" class="btn btn-primary">Shop Collection</a>
+            <a href="our-story.html" class="btn btn-secondary">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="story">
+    <div class="container">
+        <div class="section-title">
+            <h2>Rooted in Africa. Built for Tomorrow.</h2>
+        </div>
+        <div class="story">
+            AfroTech Clothing celebrates African excellence through contemporary fashion. Inspired by Tanzanian identity, Kanga patterns and modern design, our collections blend heritage with technology and urban culture to create apparel for the next generation of creators, entrepreneurs and visionaries.
+        </div>
+    </div>
+</section>
+
+<section class="section" id="shop">
+    <div class="container">
+        <div class="section-title">
+            <h2>Featured Collection</h2>
+            <p>Modern African streetwear shaped by cultural tradition and smart production.</p>
+        </div>
+        <div class="products">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80" alt="Tech hoodie">
+                <div class="card-content">
+                    <h3>Ubuntu Tech Hoodie</h3>
+                    <p>Premium black hoodie featuring Kanga-inspired geometry and breathable performance fabric.</p>
+                    <div class="price">R899</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80" alt="African print tee">
+                <div class="card-content">
+                    <h3>Kanga Fusion Tee</h3>
+                    <p>A modern reinterpretation of classic African textile patterns, tailored for everyday wear.</p>
+                    <div class="price">R499</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" alt="Future Africa jacket">
+                <div class="card-content">
+                    <h3>Future Africa Jacket</h3>
+                    <p>Premium outerwear inspired by innovation, technology and Afri-urban creativity.</p>
+                    <div class="price">R1,499</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="technology">
+    <div class="container">
+        <div class="section-title">
+            <h2>Technology in Every Thread</h2>
+            <p>Our clothing is shaped by more than pattern and culture. We use modern processes to create better quality apparel.</p>
+        </div>
+
+        <div class="tech-grid">
+            <div class="tech-card">
+                <h3>Digital Design</h3>
+                <p>We use concept and pattern design technology to translate African storytelling into contemporary silhouettes and precise garment templates.</p>
+            </div>
+            <div class="tech-card">
+                <h3>Fabric Innovation</h3>
+                <p>We select materials that balance comfort, durability and style so our clothing feels premium and performs in daily life.</p>
+            </div>
+            <div class="tech-card">
+                <h3>Smart Production</h3>
+                <p>Modern cutting, stitching and finishing processes help us maintain consistency, efficiency and quality across every collection.</p>
+            </div>
+            <div class="tech-card">
+                <h3>Purposeful Craft</h3>
+                <p>Every piece is built to celebrate identity while integrating practical design choices for wearable, long-lasting modern fashion.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="banner">
+    <h2>Culture. Innovation. Identity.</h2>
+    <p>AfroTech Clothing creates premium fashion that proudly represents African excellence through contemporary design, smart craftsmanship and Tanzanian heritage.</p>
+</section>
+
+<section class="section" id="reviews">
+    <div class="container">
+        <div class="section-title">
+            <h2>What Our Customers Say</h2>
+            <p>Feedback from the community wearing AfroTech.</p>
+        </div>
+
+        <div class="review-slider">
+            <div id="reviewGrid" class="review-track"></div>
+            <div class="review-slider-controls">
+                <button type="button" class="review-arrow" data-direction="prev" aria-label="Previous review">‹</button>
+                <button type="button" class="review-arrow" data-direction="next" aria-label="Next review">›</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="features">
+    <div class="container">
+        <div class="section-title">
+            <h2>Why AfroTech?</h2>
+        </div>
+        <div class="features">
+            <div class="feature">
+                <h3>Tanzanian Roots</h3>
+                <p>Kanga patterns and East African inspiration are woven into the identity of the brand.</p>
+            </div>
+            <div class="feature">
+                <h3>Premium Quality</h3>
+                <p>Carefully selected fabrics and refined finishes ensure comfort, durability and confidence.</p>
+            </div>
+            <div class="feature">
+                <h3>Modern Streetwear</h3>
+                <p>Contemporary silhouettes designed for daily life, creative culture and self-expression.</p>
+            </div>
+            <div class="feature">
+                <h3>Community Impact</h3>
+                <p>We give back to initiatives that support education, youth and community wellbeing across Tanzania.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="feedback">
+    <div class="container">
+        <div class="section-title">
+            <h2>We Value Your Feedback</h2>
+            <p>Tell us what you think about the brand, the collection, or your experience with AfroTech.</p>
+        </div>
+        <form id="feedbackForm" class="contact-form">
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="name">Name</label>
+                    <input id="name" type="text" placeholder="Your name" required>
+                </div>
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" placeholder="Your email" required>
+                </div>
+            </div>
+            <div class="form-field">
+                <label>Rating</label>
+                <div class="star-rating" role="radiogroup" aria-label="Choose your rating">
+                    <button type="button" class="star-btn" data-value="1" aria-label="1 star">★</button>
+                    <button type="button" class="star-btn" data-value="2" aria-label="2 stars">★</button>
+                    <button type="button" class="star-btn" data-value="3" aria-label="3 stars">★</button>
+                    <button type="button" class="star-btn" data-value="4" aria-label="4 stars">★</button>
+                    <button type="button" class="star-btn" data-value="5" aria-label="5 stars">★</button>
+                </div>
+                <input type="hidden" id="rating" name="rating" required>
+            </div>
+            <div class="form-field">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Share your feedback..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-tertiary">Send Feedback</button>
+        </form>
+    </div>
+</section>
+
+<section class="cta" id="contact">
+    <h2>Join The AfroTech Movement</h2>
+    <p>
+        Discover premium fashion inspired by African culture, innovation and creativity.
+    </p>
+    <a href="country-impact.html" class="btn btn-primary">Explore Our Impact</a>
+</section>
+
+<footer>
+    <h3>AfroTech Clothing</h3>
+    <br>
+    <p>© 2026 AfroTech Clothing. All Rights Reserved.</p>
+</footer>
+
+<script>
+    const REVIEW_STORAGE_KEY = 'afrotechReviews';
+    const defaultReviews = [
+        { name: 'Amina', location: 'Cape Town', rating: 5, message: 'The fabric feels premium and the design is so unique. I love how the Kanga-inspired print still feels modern and wearable.' },
+        { name: 'Daniel', location: 'Johannesburg', rating: 5, message: 'AfroTech is more than fashion. It tells a story of Africa, innovation and identity. I wear my hoodie everywhere.' },
+        { name: 'Leah', location: 'Durban', rating: 5, message: 'I ordered from the collection and the quality exceeded expectations. The look is sharp, comfortable and meaningful.' }
+    ];
+
+    function getReviews() {
+        const saved = localStorage.getItem(REVIEW_STORAGE_KEY);
+        if (!saved) {
+            localStorage.setItem(REVIEW_STORAGE_KEY, JSON.stringify(defaultReviews));
+            return [...defaultReviews];
+        }
+
+        try {
+            const parsed = JSON.parse(saved);
+            if (Array.isArray(parsed) && parsed.length) return parsed;
+        } catch (error) {
+            console.error('Unable to parse saved reviews', error);
+        }
+
+        localStorage.setItem(REVIEW_STORAGE_KEY, JSON.stringify(defaultReviews));
+        return [...defaultReviews];
+    }
+
+    function saveReviews(reviews) {
+        localStorage.setItem(REVIEW_STORAGE_KEY, JSON.stringify(reviews));
+    }
+
+    function renderStars(rating) {
+        const safeRating = Math.min(5, Math.max(1, Number(rating) || 5));
+        return '★'.repeat(safeRating) + '☆'.repeat(5 - safeRating);
+    }
+
+    let reviewSliderIndex = 0;
+
+    function updateReviewSlider() {
+        const reviewGrid = document.getElementById('reviewGrid');
+        if (!reviewGrid) return;
+
+        const slides = reviewGrid.querySelectorAll('.review-slide');
+        if (!slides.length) return;
+
+        reviewGrid.style.transform = `translateX(-${reviewSliderIndex * 100}%)`;
+    }
+
+    function renderReviewGrid() {
+        const reviewGrid = document.getElementById('reviewGrid');
+        if (!reviewGrid) return;
+
+        const reviews = getReviews();
+        const reviewGroups = [];
+        for (let index = 0; index < reviews.length; index += 3) {
+            reviewGroups.push(reviews.slice(index, index + 3));
+        }
+
+        reviewGrid.innerHTML = reviewGroups.map((group) => `
+            <div class="review-slide">
+                <div class="review-group">
+                    ${group.map((review) => `
+                        <div class="review-card">
+                            <div class="stars">${renderStars(review.rating)}</div>
+                            <p>“${review.message}”</p>
+                            <div class="person">— ${review.name}, ${review.location || 'Customer'}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `).join('');
+
+        const reviewsCount = reviewGrid.querySelectorAll('.review-slide').length;
+        if (reviewsCount) {
+            reviewSliderIndex = Math.min(reviewSliderIndex, reviewsCount - 1);
+        }
+
+        updateReviewSlider();
+    }
+
+    document.querySelectorAll('.review-arrow').forEach((button) => {
+        button.addEventListener('click', function () {
+            const reviewGrid = document.getElementById('reviewGrid');
+            const slides = reviewGrid ? reviewGrid.querySelectorAll('.review-slide') : [];
+            if (!slides.length) return;
+
+            const direction = button.dataset.direction === 'next' ? 1 : -1;
+            reviewSliderIndex = (reviewSliderIndex + direction + slides.length) % slides.length;
+            updateReviewSlider();
+        });
+    });
+
+    setInterval(() => {
+        const reviewGrid = document.getElementById('reviewGrid');
+        const slides = reviewGrid ? reviewGrid.querySelectorAll('.review-slide') : [];
+        if (!slides.length) return;
+
+        reviewSliderIndex = (reviewSliderIndex + 1) % slides.length;
+        updateReviewSlider();
+    }, 3000);
+
+    function setupRatingStars() {
+        const ratingInput = document.getElementById('rating');
+        const starButtons = document.querySelectorAll('.star-btn');
+        if (!ratingInput || !starButtons.length) return;
+
+        const updateStars = (selectedValue) => {
+            const value = Number(selectedValue || 0);
+            ratingInput.value = value;
+            starButtons.forEach((button) => {
+                const buttonValue = Number(button.dataset.value);
+                button.classList.toggle('active', buttonValue <= value);
+                button.setAttribute('aria-pressed', buttonValue <= value ? 'true' : 'false');
+            });
+        };
+
+        starButtons.forEach((button) => {
+            button.addEventListener('click', function () {
+                updateStars(button.dataset.value);
+            });
+        });
+
+        const currentValue = Number(ratingInput.value || 0);
+        updateStars(currentValue || 5);
+    }
+
+    function resetRatingStars() {
+        const ratingInput = document.getElementById('rating');
+        const starButtons = document.querySelectorAll('.star-btn');
+        if (!ratingInput || !starButtons.length) return;
+
+        ratingInput.value = '';
+        starButtons.forEach((button) => {
+            button.classList.remove('active');
+            button.setAttribute('aria-pressed', 'false');
+        });
+    }
+
+    const feedbackForm = document.getElementById('feedbackForm');
+    if (feedbackForm) {
+        setupRatingStars();
+
+        feedbackForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const rating = Number(document.getElementById('rating').value);
+
+            if (!name || !email || !message || !rating) return;
+
+            const reviews = getReviews();
+            reviews.push({
+                name,
+                location: 'Customer',
+                rating,
+                message
+            });
+
+            saveReviews(reviews);
+            renderReviewGrid();
+            feedbackForm.reset();
+            resetRatingStars();
+            alert('Thank you for your feedback!');
+        });
+    }
+
+    renderReviewGrid();
+</script>
+
+</body>
+</html>
+
